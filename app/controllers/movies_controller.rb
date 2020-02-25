@@ -1,11 +1,11 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
   
   def index
     @movies = Movie.all
   end
 
   def show
-    @movie = Movie.find(params[:id])
   end
 
   def new
@@ -22,11 +22,9 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       redirect_to movies_path, notice: 'Successfully Updated..'
     else
@@ -35,12 +33,15 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_path, notice: 'movie deleted successfully..'
   end
 
   private
+
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
   def movie_params
     params.require(:movie).permit(:name, :year, :director, :main_star, :description, genre_ids: [])
