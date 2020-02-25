@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to movies_path, notice: 'New Movie Successfully Created..'
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to movies_path, notice: 'Successfully Updated..'
     else
-      render 'edit'
+      render :edit
     end
   end
 

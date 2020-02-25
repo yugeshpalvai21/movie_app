@@ -1,0 +1,9 @@
+<div>
+	<h4><%= pluralize(object.errors.count, "error") %> encounter while saving your record:</h4>
+	<ul>
+	  <% object.errors.full_messages.each do |msg| %>
+	    <li> <%= msg %></li>
+	  <% end %>
+	</ul>
+</div>
+<br><br>

@@ -1,4 +1,7 @@
-<%= form_with model: movie do |form| %>
+<%= form_with model: movie, local: true do |form| %>
+  <% if movie.errors.any? %>
+    <%= render 'shared/error_messages', object: movie %>
+  <% end %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -27,6 +30,7 @@
   <div>
     <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
   </div>
+  <br>
   <div>
     <%= form.submit %>
   </div>
