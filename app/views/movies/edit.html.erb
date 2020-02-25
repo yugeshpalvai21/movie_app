@@ -1,0 +1,35 @@
+<h1 aling="center">Edit Movie Details</h1>
+<hr>
+<%= form_with model: @movie do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :year %>
+    <%= form.text_field :year %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :director %>
+    <%= form.text_field :director %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :main_star %>
+    <%= form.text_field :main_star %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <br>
+  <div>
+    <%= form.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

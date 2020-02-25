@@ -1,7 +1,7 @@
 <h1 align="center">List Of Movies</h1>
 <% @movies.each do |movie| %>
   <div>
-    <h3><%= movie.name.capitalize%></h3>
+    <h3><%= link_to movie.name.capitalize, movie %></h3>
     <p>Year Of Release: <%= movie.year %></p>
     <p>Director: <%= movie.director %></p>
     <p>Lead Role: <%= movie.main_star %></p>

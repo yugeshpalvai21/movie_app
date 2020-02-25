@@ -4,6 +4,10 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+  end
+
   def new
     @movie = Movie.new
   end
@@ -14,6 +18,19 @@ class MoviesController < ApplicationController
       redirect_to movies_path, notice: 'New Movie Successfully Created..'
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @movie = Movie.find(params[:id])
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      redirect_to movies_path, notice: 'Successfully Updated..'
+    else
+      render 'edit'
     end
   end
 
