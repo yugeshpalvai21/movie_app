@@ -9,7 +9,7 @@
   <br>
   <div>
     <%= form.label :year %>
-    <%= form.text_field :year %>
+    <%= form.select :year, [*1900..2019].reverse  %>
   </div>
   <br>
   <div>
