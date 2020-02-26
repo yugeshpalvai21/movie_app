@@ -10,6 +10,16 @@ class AdminsController < ApplicationController
     @users = User.all
   end
 
+  def user_details
+    @user = User.find_by_username(params[:username])
+  end
+
+  def destroy_user
+    @user = User.find_by_username(params[:username])
+    @user.destroy
+    redirect_to admin_users_path, notice: 'user deleted successfully'
+  end
+
   private
 
   def autherize_admin!

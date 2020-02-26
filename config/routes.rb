@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   
   get 'admin/movies', to: 'admins#movies'
   get 'admin/users', to: 'admins#users'
+  get 'admin/:username', to: 'admins#user_details', as: 'user_details'
+  delete 'admin/:username/destroy', to: 'admins#destroy_user', as: 'admin_destroy_user'
 end
