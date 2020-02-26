@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   root to: 'movies#index'
   resources :movies
   namespace :v1 do
