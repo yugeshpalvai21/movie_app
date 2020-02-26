@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     get '/:user/movies/:movie/add', to: 'users#add_favorite', as: 'add_favorite'
     get '/:user/movies/:movie/remove', to: 'users#remove_favorite', as: 'remove_favorite'
   end
+  
+  
+  get 'admin/movies', to: 'admins#movies'
+  get 'admin/users', to: 'admins#users'
 end
