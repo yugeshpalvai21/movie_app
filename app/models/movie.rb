@@ -4,6 +4,6 @@ class Movie < ApplicationRecord
   
   has_and_belongs_to_many :genres
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
 end

@@ -1,13 +1,8 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
+  before_action :autherize_admin!
+  before_action :set_movie, only: [:edit, :update, :destroy]
   
-  def index
-    @movies = Movie.all
-  end
-
-  def show
-  end
-
   def new
     @movie = Movie.new
   end
@@ -15,7 +10,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to movies_path, notice: 'New Movie Successfully Created..'
+      redirect_to admin_movies_path, notice: 'New Movie Successfully Created..'
     else
       render :new
     end
@@ -26,7 +21,7 @@ class MoviesController < ApplicationController
 
   def update
     if @movie.update(movie_params)
-      redirect_to movies_path, notice: 'Successfully Updated..'
+      redirect_to admin_movies_path, notice: 'Successfully Updated..'
     else
       render :edit
     end
@@ -34,7 +29,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_path, notice: 'movie deleted successfully..'
+    redirect_to admin_movies_path, notice: 'movie deleted successfully..'
   end
 
   private
@@ -45,5 +40,11 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(:name, :year, :director, :main_star, :description, genre_ids: [])
+  end
+
+  def autherize_admin!
+    unless current_admin.admin?
+      redirect_to root_path, notice: 'Not Autherized To Access Admin Area'
+    end
   end
 end

@@ -1,0 +1,12 @@
+<h1 align="center">User Details...</h1>
+<h3>Username - <%= @user.username %></h3>
+<h5>List Of Favorited Movies</h5>
+<ul>
+  <% @user.movies.each do |movie| %>
+    <li><%= movie.name %></li>
+  <% end %>
+</ul>
+<hr>
+<%= link_to "<< Go to Users Page", admin_users_path %>
+<br>
+<%= link_to "Back To Admin Home", admin_home_path %>

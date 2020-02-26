@@ -1,0 +1,22 @@
+<h1 aling="center">List Of Existed Users</h1>
+<hr>
+<table>
+  <thead>
+    <tr>
+      <td>Username</td>
+      <td>Favorited Movies</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user_details_path(user.username) %></td>
+        <td><%= user.movies.count %></td>
+        <td><%= link_to "Delete User", admin_destroy_user_path(user.username), method: :delete, data: {confirm: 'Are You Sure?'} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "Back To Admin Home", admin_home_path %>
