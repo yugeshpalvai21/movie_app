@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :authenticate_admin!
   before_action :autherize_admin!
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:edit, :update, :destroy]
   
   def new
     @movie = Movie.new
