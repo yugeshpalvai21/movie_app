@@ -2,6 +2,9 @@ class AdminsController < ApplicationController
   before_action :authenticate_admin!
   before_action :autherize_admin!
 
+  def index
+  end
+  
   def movies
     @movies = Movie.all
   end
