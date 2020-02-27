@@ -1,24 +1,53 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### API END POINTS
 
-Things you may want to cover:
+- To Access All Movies
 
-* Ruby version
+`http://localhost:3000/v1/movies`
 
-* System dependencies
+- To Access Details Of Single Movie
 
-* Configuration
+`http://localhost:3000/v1/movies/1`
 
-* Database creation
+- To Access User Favorited Movies
+    - it checks whether user available in the databse or not
+    - if user not available with that username, then app creates user in our database with that username
 
-* Database initialization
+`http://localhost:3000/v1/yugesh/movies`
 
-* How to run the test suite
+- To Add Movie To User Favorited List
 
-* Services (job queues, cache servers, search engines, etc.)
+`http://localhost:3000/v1/yugesh/movies/1/add`
 
-* Deployment instructions
 
-* ...
+- To Remove Movie From User Favorited List
+
+`http://localhost:3000/v1/yugesh/movies/1/remove`
+
+### APP ROOT PAGE
+
+- App Route page holds link to access admin section
+
+`http://www.localhost:3000`
+
+### ADMIN PAGES
+
+- Admin home pages which holds links to Access movies and users pages
+
+`http://www.localhost:3000/admin`
+
+- Movies Page
+  - link to create new movie
+  - list of all movies
+  - link to edit movie details
+  - link to delete movie from databse
+  - link to signout 
+`http://www.localhost:3000/admin/movies`
+
+- Users Page
+  - list of all users with favorited list
+  - link to single user details
+  - link to delete user 
+
+`http://www.localhost:3000/admin/users`
